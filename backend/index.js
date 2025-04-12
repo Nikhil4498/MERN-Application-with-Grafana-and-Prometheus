@@ -1,21 +1,34 @@
-const express = require('express')
-const cors = require('cors')
-require('dotenv').config()
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config();
 
-const app = express()
-PORT = process.env.PORT
-const conn = require('./conn')
-app.use(express.json())
-app.use(cors())
+const app = express();
+const PORT = process.env.PORT || 3001;
 
-const tripRoutes = require('./routes/trip.routes')
+// MongoDB connection file
+const conn = require('./conn');
 
-app.use('/trip', tripRoutes) // http://localhost:3001/trip --> POST/GET/GET by ID
+app.use(express.json());
+app.use(cors());
 
-app.get('/hello', (req,res)=>{
-    res.send('Hello World!')
-})
+const client = require('prom-client');
+client.collectDefaultMetrics();
 
-app.listen(PORT, ()=>{
-    console.log(`Server started at http://localhost:${PORT}`)
-})
+app.get('/metrics', async (req, res) => {
+  res.set('Content-Type', client.register.contentType);
+  res.send(await client.register.metrics());
+});
+
+// Routes
+const tripRoutes = require('./routes/trip.routes');
+app.use('/trip', tripRoutes); // http://localhost:3001/trip
+
+// Test route
+app.get('/hello', (req, res) => {
+  res.send('Hello World!');
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`✅ Server started at http://localhost:${PORT}`);
+});
