@@ -1,4 +1,4 @@
-Travel Memory MERN Application – Advanced Monitoring Setup
+## Travel Memory MERN Application – Advanced Monitoring Setup
 
 This project enhances a MERN (MongoDB, Express, React, Node.js) application with **advanced observability tools**:
 
@@ -55,10 +55,25 @@ Step 2: Start the Backend
       		      # Your backend runs at: http://localhost:3001
       		      # Prometheus metrics available at: http://localhost:3001/metrics
 
+![image](https://github.com/user-attachments/assets/26c89a41-e80c-4fcc-a387-0ffb738a93e6)
+
+![image](https://github.com/user-attachments/assets/4cd71b1a-d8cf-4a1e-8a1c-7e0b1f68fd77)
+
+![image](https://github.com/user-attachments/assets/ef13714d-7d77-445d-821d-4661dcdf95c9)
+
+
+
+
 Step 3: Start the Monitoring Stack with Docker
 		# From the project root, run:
 
 		docker-compose up -d   		#This will start: MongoDB, MongoDB Exporter,Prometheus,Grafana,Loki,Promtail
+
+![image](https://github.com/user-attachments/assets/61f07cbd-dc47-4fa5-a6a0-7b588dc8cbd1)
+
+![image](https://github.com/user-attachments/assets/cb1fecee-c6e9-46f5-8515-ec9897931fe8)
+
+
 
 Step 4: Access Grafana
 
@@ -76,6 +91,9 @@ Step 4: Access Grafana
         
         		MongoDB metrics via mongodb-exporter
 
+![image](https://github.com/user-attachments/assets/fbdd966a-edb4-48b3-9ae5-7bb89c8359ae)
+
+
 Step 5: Add Loki in Grafana
           Go to http://localhost:3000
 
@@ -90,6 +108,8 @@ Step 5: Add Loki in Grafana
         Set URL: http://loki:3100
         Save & Test               #Should say: Data source is working
 
+![image](https://github.com/user-attachments/assets/ec9e1797-c50a-45e3-aa46-98b9c48a3403)
+
 		
 # API Routes:
 
@@ -98,6 +118,8 @@ GET	      /hello	    Health check
 GET	      /trip	      Fetch all trips
 POST	    /trip	      Add a new trip
 GET	      /metrics	   Prometheus metrics scrape
+
+![image](https://github.com/user-attachments/assets/a1d45ca9-bb6f-4e7f-81be-db2992d0aeb1)
 
 
 # Features:
